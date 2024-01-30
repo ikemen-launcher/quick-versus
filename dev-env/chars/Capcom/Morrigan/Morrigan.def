@@ -1,0 +1,5 @@
+[Info]
+name = "Morrigan"
+
+[Files]
+cns = constants.cns

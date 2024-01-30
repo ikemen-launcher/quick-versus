@@ -1,0 +1,5 @@
+[Info]
+name = "Juri"
+
+[Files]
+cns = constants.cns
