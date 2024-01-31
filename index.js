@@ -1,5 +1,5 @@
 const util = require("node:util");
-const exec = util.promisify(require("node:child_process").exec);
+const { spawn } = require("node:child_process");
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
@@ -140,9 +140,22 @@ async function launchGame(event, options) {
   if (options.stage) {
     command += ` -s="${options.stage}"`;
   }
-  console.log(command);
-  await exec(command, { cwd: directoryPath });
-  return true;
+
+  return new Promise((resolve, reject) => {
+    const args = ["-c", command];
+    console.log("launch game", args);
+    const process = spawn("sh", args, { cwd: directoryPath });
+    process.stdout.on("data", (data) => {
+      console.log(data.toString('utf8'));
+    });
+    process.stderr.on("data", (data) => {
+      console.error(data.toString('utf8'));
+    });
+    process.on("close", (code) => {
+      console.log("end game");
+      resolve(true);
+    });
+  });
 }
 
 function getConfigYaml(event, filePath) {
