@@ -18,7 +18,7 @@ const Wrapper = styled.main`
   height: 100%;
   background: #333;
   color: white;
-  font-family: BadaBoom;
+  font-family: HeyComic;
   overflow: hidden;
   background: url(./assets/background.jpg);
   background-size: cover;

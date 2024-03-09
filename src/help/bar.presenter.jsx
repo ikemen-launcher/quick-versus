@@ -13,7 +13,7 @@ const Bar = styled.div`
   padding: 1vh 2vh;
   background: linear-gradient(to bottom, transparent, black);
   color: #fff;
-  font-family: Gobold;
+  font-family: BebasNeue;
   font-size: 3vh;
   display: flex;
   flex-direction: row;

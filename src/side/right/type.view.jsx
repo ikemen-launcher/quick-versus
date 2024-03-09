@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   white-space: nowrap;
   right: ${props => props.x};
   bottom: 3vh;
-  font-family: BadaBoom;
+  font-family: HeyComic;
   font-size: 4vw;
   color: #fff;
   margin: 0;

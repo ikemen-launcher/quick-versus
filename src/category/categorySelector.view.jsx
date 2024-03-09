@@ -13,7 +13,7 @@ const Image = styled.img`
 
 const Text = styled.div`
   margin: 1vh 0;
-  font-family: BadaBoom;
+  font-family: HeyComic;
   font-size: 4vw;
   color: #fff;
   text-shadow: 1px 1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000, -1px -1px 2px #000;
