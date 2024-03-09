@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   left: ${props => props.x};
   bottom: 3vh;
   font-family: HeyComic;
-  font-size: 4vw;
+  font-size: 3vw;
   color: #fff;
   margin: 0;
   text-shadow: 2px 2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000, -2px -2px 4px #000;
@@ -19,10 +19,11 @@ const Wrapper = styled.div`
 export default function CharacterType({ children }) {
   const options = useCharacterNameOptions();
 
-  let x = "40vw";
+  let x = "43vw";
   if (options && options.x) {
     x = options.x;
   }
 
+  return null; // disabled
   return <Wrapper x={x}>{children}</Wrapper>;
 }

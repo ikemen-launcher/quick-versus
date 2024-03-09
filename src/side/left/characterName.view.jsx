@@ -7,7 +7,7 @@ const Wrapper = styled.h1`
   z-index: 130;
   white-space: nowrap;
   left: ${props => props.x};
-  bottom: 10vh;
+  bottom: 3vh;
   font-family: HeyComic;
   font-size: 4vw;
   letter-spacing: 0.05em;
@@ -20,7 +20,7 @@ const Wrapper = styled.h1`
 export default function CharacterName({ children }) {
   const options = useCharacterNameOptions();
 
-  let x = "40vw";
+  let x = "43vw";
   if (options && options.x) {
     x = options.x;
   }

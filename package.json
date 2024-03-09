@@ -109,6 +109,16 @@
     },
     "win": {
       "target": "portable"
+    },
+    "linux": {
+      "target": "dir",
+      "executableName": "quick-versus",
+      "extraFiles": [
+        {
+          "from": "linux-libs/libcups.so.2",
+          "to": "libcups.so.2"
+        }
+      ]
     }
   }
 }
