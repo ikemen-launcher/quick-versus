@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import loadConfiguration from "./configuration/loadConfiguration";
+import FileNotFoundError from "./configuration/FileNotFoundError";
+import InvalidJsonError from "./configuration/InvalidJsonError";
+import InvalidYamlError from "./configuration/InvalidYamlError";
 import ConfigurationContext from "./configuration/configuration.context";
 import EnvironmentContext from "./configuration/environment.context";
 import NavigationProvider from "./navigation/navigation.provider";
@@ -51,53 +55,51 @@ export default function App() {
     );
   }
 
-  const jsonFilePath = mainAPI.resolve(currentDirectory, "quick-versus.json");
-  const yamlFilePath = mainAPI.resolve(currentDirectory, "quick-versus.yml");
-  if (!mainAPI.existsSync(jsonFilePath) && !mainAPI.existsSync(yamlFilePath)) {
+  let configuration;
+  try {
+    configuration = loadConfiguration();
+  } catch (error) {
+    if (error instanceof FileNotFoundError) {
+      return (
+        <Requirement>
+          <p>
+            Configuration file is missing:
+          </p>
+          <p>
+            {error.getFilePath()}
+          </p>
+        </Requirement>
+      );
+    }
+
+    if (error instanceof InvalidJsonError) {
+      return (
+        <FatalError>
+          <p>Invalid JSON file:</p>
+          <p>{error.getFilePath()}</p>
+        </FatalError>
+      );
+    }
+
+    if (error instanceof InvalidYamlError) {
+      return (
+        <FatalError>
+          <p>Invalid YAML file:</p>
+          <p>{error.getFilePath()}</p>
+        </FatalError>
+      );
+    }
+
     return (
-      <Requirement>
-        <p>
-          Configuration file is missing:
-          {jsonFilePath}
-        </p>
-      </Requirement>
+      <FatalError>
+        <p>Unknown error</p>
+        <p>{error.message}</p>
+      </FatalError>
     );
   }
 
-  let configuration;
-  let configurationFilePath;
-  if (mainAPI.existsSync(jsonFilePath)) {
-    const jsonContent = mainAPI.readFileSync(jsonFilePath);
-    try {
-      configuration = JSON.parse(jsonContent);
-      configurationFilePath = jsonFilePath;
-    } catch (error) {
-      return (
-        <FatalError>
-          <p>Invalid JSON configuration file:</p>
-          <p>{jsonFilePath}</p>
-          <p>{error.message}</p>
-        </FatalError>
-      );
-    }
-  } else if (mainAPI.existsSync(yamlFilePath)) {
-    try {
-      configuration = mainAPI.configYaml(yamlFilePath);
-      configurationFilePath = yamlFilePath;
-    } catch (error) {
-      return (
-        <FatalError>
-          <p>Invalid YAML configuration file:</p>
-          <p>{yamlFilePath}</p>
-          <p>{error.message}</p>
-        </FatalError>
-      );
-    }
-  }
-
   const environment = {
-    currentDirectory,
-    configurationFilePath
+    currentDirectory
   };
 
   let customBackground;

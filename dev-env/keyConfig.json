@@ -1,0 +1,58 @@
+{
+  "playerOne": {
+    "keyboard": {
+      "left": "ArrowLeft",
+      "right": "ArrowRight",
+      "up": "ArrowUp",
+      "down": "ArrowDown",
+      "a": "x",
+      "b": "w",
+      "x": "s",
+      "y": "q",
+      "l1": "d",
+      "r1": "c",
+      "quit": "escape"
+    },
+    "gamepad": {
+      "left": "A17",
+      "right": "A18",
+      "up": "A19",
+      "down": "A20",
+      "a": "A0",
+      "b": "A1",
+      "x": "A7",
+      "y": "A2",
+      "l1": "A3",
+      "r1": "A6",
+      "quit": "A9"
+    }
+  },
+  "playerTwo": {
+    "keyboard": {
+      "left": "k",
+      "right": "m",
+      "up": "o",
+      "down": "l",
+      "a": "g",
+      "b": "f",
+      "x": "t",
+      "y": "r",
+      "l1": "y",
+      "r1": "h",
+      "quit": "o"
+    },
+    "gamepad": {
+      "left": "B17",
+      "right": "B18",
+      "up": "B19",
+      "down": "B20",
+      "a": "B0",
+      "b": "B1",
+      "x": "B7",
+      "y": "B2",
+      "l1": "B3",
+      "r1": "B6",
+      "quit": "B9"
+    }
+  }
+}

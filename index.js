@@ -37,8 +37,8 @@ function getCurrentDirectory() {
 
 function getConfiguration() {
   const currentDirectory = getCurrentDirectory();
-  const jsonFilePath = path.resolve(currentDirectory, "quick-versus.json");
-  const yamlFilePath = path.resolve(currentDirectory, "quick-versus.yml");
+  const jsonFilePath = path.resolve(currentDirectory, "config.json");
+  const yamlFilePath = path.resolve(currentDirectory, "config.yml");
   let config;
   if (fs.existsSync(jsonFilePath)) {
     config = require(jsonFilePath);
@@ -94,7 +94,7 @@ function createWindow() {
     webSecurity: false
   });
   window.loadFile("build/index.html");
-  //window.webContents.openDevTools();
+  window.webContents.openDevTools();
 
   return window;
 }
