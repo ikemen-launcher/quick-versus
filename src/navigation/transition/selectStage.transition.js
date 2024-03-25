@@ -4,7 +4,7 @@ import TRAINING_FIGHTING from "../state/trainingFighting.state";
 import VERSUS_FIGHTING from "../state/versusFighting.state";
 
 export default function selectStage(data, action) {
-  const newData = { ...data, stage: action.stage };
+  const newData = { ...data, stage: action.stage, stageIndex: action.stageIndex };
 
   if (data.state === TRAINING_SELECTING_STAGE) {
     newData.state = TRAINING_FIGHTING;

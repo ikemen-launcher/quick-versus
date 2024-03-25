@@ -94,7 +94,7 @@ function createWindow() {
     webSecurity: false
   });
   window.loadFile("build/index.html");
-  window.webContents.openDevTools();
+  // window.webContents.openDevTools();
 
   return window;
 }

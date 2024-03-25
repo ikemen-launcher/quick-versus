@@ -1,5 +1,8 @@
 [
   {
+    "random": true
+  },
+  {
     "definition": "Training.def",
     "image": "Training.jpg"
   },

@@ -10,34 +10,36 @@ import Title from "./title.view";
 import Name from "./name.view";
 import Preview from "./preview.view";
 import getSelectableStages from "./util/getSelectableStages";
+import useNavigation from "../navigation/useData.hook";
 
 export default function SelectingStageByPlayers() {
+  const { stageIndex } = useNavigation();
   const dispatch = useNavigationDispatch();
   const stages = useStages();
   const inputPlayerOne = useInputPlayerOne();
   const inputPlayerTwo = useInputPlayerTwo();
-  const [stageIndex, setStageIndex] = useState(0);
-  const stage = stages[stageIndex];
+  const [newStageIndex, setStageIndex] = useState(stageIndex || 0);
+  const stage = stages[newStageIndex];
   const name = useStageName(stage);
 
   useEffect(() => {
     const previous = () => {
-      if (stageIndex > 0) {
-        setStageIndex(stageIndex - 1);
+      if (newStageIndex > 0) {
+        setStageIndex(newStageIndex - 1);
       } else {
         setStageIndex(stages.length - 1);
       }
     };
     const next = () => {
-      setStageIndex((stageIndex + 1) % stages.length);
+      setStageIndex((newStageIndex + 1) % stages.length);
     };
     const confirm = () => {
       if (stage.random) {
         const selectableStages = getSelectableStages(stages);
         const randomStage = selectableStages[Math.floor(Math.random() * selectableStages.length)];
-        dispatch(selectStage(randomStage));
+        dispatch(selectStage(randomStage, newStageIndex));
       } else {
-        dispatch(selectStage(stage));
+        dispatch(selectStage(stage, newStageIndex));
       }
     };
 

@@ -14,5 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Change fonts
 - Add additional dependencies for Batocera Linux
 - Split configuration files
+- Remember the selected stage
 
 [Unreleased]: https://github.com/ikemen-launcher/quick-versus/compare/04613475d356f64b9a17af8401c3be11209536c7...HEAD
