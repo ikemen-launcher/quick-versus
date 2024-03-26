@@ -43,27 +43,34 @@ export default function SelectingStageByPlayers() {
       }
     };
 
-    inputPlayerOne.addEventListener(LEFT, next);
-    inputPlayerOne.addEventListener(RIGHT, previous);
+    inputPlayerOne.addEventListener(LEFT, previous);
+    inputPlayerOne.addEventListener(RIGHT, next);
     inputPlayerOne.addEventListener(A, confirm);
-    inputPlayerTwo.addEventListener(LEFT, next);
-    inputPlayerTwo.addEventListener(RIGHT, previous);
+    inputPlayerTwo.addEventListener(LEFT, previous);
+    inputPlayerTwo.addEventListener(RIGHT, next);
     inputPlayerTwo.addEventListener(A, confirm);
 
     return () => {
-      inputPlayerOne.removeEventListener(LEFT, next);
-      inputPlayerOne.removeEventListener(RIGHT, previous);
+      inputPlayerOne.removeEventListener(LEFT, previous);
+      inputPlayerOne.removeEventListener(RIGHT, next);
       inputPlayerOne.removeEventListener(A, confirm);
-      inputPlayerTwo.removeEventListener(LEFT, next);
-      inputPlayerTwo.removeEventListener(RIGHT, previous);
+      inputPlayerTwo.removeEventListener(LEFT, previous);
+      inputPlayerTwo.removeEventListener(RIGHT, next);
       inputPlayerTwo.removeEventListener(A, confirm);
     };
   }, [inputPlayerOne, inputPlayerTwo, stage, stages, stageIndex, dispatch]);
 
+  const nonRandomStages = stages.filter((stage) => !stage.random);
+  const indexInNonRandomStages = nonRandomStages.indexOf(stage);
+  let stagePosition = ``;
+  if (indexInNonRandomStages >= 0) {
+    stagePosition = `${indexInNonRandomStages + 1}/${nonRandomStages.length}`;
+  }
+
   return (
     <>
       <Preview stage={stage} />
-      <Title>Stage</Title>
+      <Title>Stage {stagePosition}</Title>
       <Name>{name}</Name>
     </>
   );
