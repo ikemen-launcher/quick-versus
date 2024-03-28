@@ -8,6 +8,7 @@ import useNavigationDispatch from "../../navigation/useDispatch.hook";
 import useSelectColorSound from "../../configuration/useSelectColorSound.hook";
 import useCancelSound from "../../configuration/useCancelSound.hook";
 import useNavigation from "../../navigation/useData.hook";
+import preselectCharacterOneColor from "../../navigation/action/preselectCharacterOneColor.action";
 import selectCharacterOneColor from "../../navigation/action/selectCharacterOneColor.action";
 import unselectCharacterOne from "../../navigation/action/unselectCharacterOne.action";
 import switchMode from "../../navigation/action/switchMode.action";
@@ -26,7 +27,15 @@ export default function SelectingCharacterColorByPlayerOne({ character }) {
   const colorSound = useSelectColorSound();
   const cancelSound = useCancelSound();
   const colorCount = useCharacterColorCount(character);
-  const characterColorIndex = useCharacterColorIndex(input, colorCount, navigation.characterOneColorIndex);
+
+  let defaultColorIndex = 1;
+  if (navigation.characterOneColorPreselectionByCharacter && navigation.characterOneColorPreselectionByCharacter.has(character)) {
+    defaultColorIndex = navigation.characterOneColorPreselectionByCharacter.get(character);
+  }
+  const onChange = (newColorIndex) => {
+    dispatch(preselectCharacterOneColor(newColorIndex));
+  };
+  const characterColorIndex = useCharacterColorIndex(input, colorCount, onChange, defaultColorIndex);
 
   useEffect(() => {
     const onConfirm = () => {

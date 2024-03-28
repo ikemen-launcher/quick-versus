@@ -9,6 +9,7 @@ import unselectCharacterTwo from "../../navigation/action/unselectCharacterTwo.a
 import useSelectColorSound from "../../configuration/useSelectColorSound.hook";
 import useCancelSound from "../../configuration/useCancelSound.hook";
 import useNavigation from "../../navigation/useData.hook";
+import preselectCharacterTwoColor from "../../navigation/action/preselectCharacterTwoColor.action";
 import selectCharacterTwoColor from "../../navigation/action/selectCharacterTwoColor.action";
 import ColorSelector from "../../character/colorSelector.view";
 import Portrait from "./portrait.view";
@@ -25,7 +26,15 @@ export default function SelectingCharacterColorByPlayerTwo({ character }) {
   const cancelSound = useCancelSound();
   const characterName = useCharacterName(character);
   const colorCount = useCharacterColorCount(character);
-  const characterColorIndex = useCharacterColorIndex(input, colorCount, navigation.characterTwoColorIndex);
+
+  let defaultColorIndex = 1;
+  if (navigation.characterTwoColorPreselectionByCharacter && navigation.characterTwoColorPreselectionByCharacter.has(character)) {
+    defaultColorIndex = navigation.characterTwoColorPreselectionByCharacter.get(character);
+  }
+  const onChange = (newColorIndex) => {
+    dispatch(preselectCharacterTwoColor(newColorIndex));
+  };
+  const characterColorIndex = useCharacterColorIndex(input, colorCount, onChange, defaultColorIndex);
 
   useEffect(() => {
     const onCancel = () => {

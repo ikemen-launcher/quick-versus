@@ -9,5 +9,7 @@ export default {
   rightSideState: EMPTY,
   mode: TRAINING,
   characterOnePreselectionByCategory: new Map(),
+  characterOneColorPreselectionByCharacter: new Map(),
   characterTwoPreselectionByCategory: new Map(),
+  characterTwoColorPreselectionByCharacter: new Map(),
 };
