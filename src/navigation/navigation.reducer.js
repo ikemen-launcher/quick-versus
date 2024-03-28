@@ -1,8 +1,10 @@
+import { PRESELECT_CHARACTER_ONE } from "./action/preselectCharacterOne.action";
 import { SELECT_CHARACTER_ONE } from "./action/selectCharacterOne.action";
 import { SELECT_CHARACTER_ONE_WITH_STYLE_AND_COLOR } from "./action/selectCharacterOneWithSyleAndColor.action";
 import { SELECT_CHARACTER_ONE_STYLE } from "./action/selectCharacterOneStyle.action";
 import { SELECT_CHARACTER_ONE_COLOR } from "./action/selectCharacterOneColor.action";
 import { UNSELECT_CHARACTER_ONE } from "./action/unselectCharacterOne.action";
+import { PRESELECT_CHARACTER_TWO } from "./action/preselectCharacterTwo.action";
 import { SELECT_CHARACTER_TWO } from "./action/selectCharacterTwo.action";
 import { SELECT_CHARACTER_TWO_WITH_STYLE_AND_COLOR } from "./action/selectCharacterTwoWithSyleAndColor.action";
 import { SELECT_CHARACTER_TWO_STYLE } from "./action/selectCharacterTwoStyle.action";
@@ -12,11 +14,13 @@ import { UNSELECT_CHARACTER_TWO } from "./action/unselectCharacterTwo.action";
 import { SWITCH_MODE } from "./action/switchMode.action";
 import { SELECT_STAGE } from "./action/selectStage.action";
 import { END_FIGHT } from "./action/endFight.action";
+import preselectCharacterOne from "./transition/preselectCharacterOne.transition";
 import selectCharacterOne from "./transition/selectCharacterOne.transition";
 import selectCharacterOneWithStyleAndColor from "./transition/selectCharacterOneWithStyleAndColor.transition";
 import selectCharacterOneStyle from "./transition/selectCharacterOneStyle.transition";
 import selectCharacterOneColor from "./transition/selectCharacterOneColor.transition";
 import unselectCharacterOne from "./transition/unselectCharacterOne.transition";
+import preselectCharacterTwo from "./transition/preselectCharacterTwo.transition";
 import selectCharacterTwo from "./transition/selectCharacterTwo.transition";
 import selectCharacterTwoWithStyleAndColor from "./transition/selectCharacterTwoWithStyleAndColor.transition";
 import selectCharacterTwoStyle from "./transition/selectCharacterTwoStyle.transition";
@@ -32,6 +36,9 @@ export default function navigationReducer(data, action) {
     case SWITCH_MODE:
       return switchMode(data);
 
+    case PRESELECT_CHARACTER_ONE:
+      return preselectCharacterOne(data, action);
+
     case SELECT_CHARACTER_ONE:
       return selectCharacterOne(data, action);
 
@@ -46,6 +53,9 @@ export default function navigationReducer(data, action) {
 
     case UNSELECT_CHARACTER_ONE:
       return unselectCharacterOne(data);
+
+    case PRESELECT_CHARACTER_TWO:
+      return preselectCharacterTwo(data, action);
 
     case SELECT_CHARACTER_TWO:
       return selectCharacterTwo(data, action);

@@ -7,5 +7,7 @@ export default {
   state: TRAINING_SELECTING_CHARACTER_ONE,
   leftSideState: SELECTING_CHARACTER,
   rightSideState: EMPTY,
-  mode: TRAINING
+  mode: TRAINING,
+  characterOnePreselectionByCategory: new Map(),
+  characterTwoPreselectionByCategory: new Map(),
 };

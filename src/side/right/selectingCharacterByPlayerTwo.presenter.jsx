@@ -8,6 +8,7 @@ import useCharacterName from "../../character/useCharacterName.hook";
 import useNavigation from "../../navigation/useData.hook";
 import useNavigationDispatch from "../../navigation/useDispatch.hook";
 import useSelectCharacterSound from "../../configuration/useSelectCharacterSound.hook";
+import preselectCharacterTwo from "../../navigation/action/preselectCharacterTwo.action";
 import selectCharacterTwo from "../../navigation/action/selectCharacterTwo.action";
 import selectCharacterTwoWithStyleAndColor from "../../navigation/action/selectCharacterTwoWithSyleAndColor.action";
 import Zone from "./zone.view";
@@ -35,7 +36,15 @@ export default function SelectingCharacterByPlayerTwo() {
   const categoryIndex = useCategoryIndex(categories, input, navigation.characterTwoCategoryIndex);
   const category = categories[categoryIndex];
   const characters = category.characters || [];
-  const characterIndex = useCharacterIndex(characters, input, navigation.characterTwoIndex);
+
+  let defaultCharacterIndex = 0;
+  if (navigation.characterTwoPreselectionByCategory && navigation.characterTwoPreselectionByCategory.has(categoryIndex)) {
+    defaultCharacterIndex = navigation.characterTwoPreselectionByCategory.get(categoryIndex);
+  }
+  const onChange = (newCharacterIndex) => {
+    dispatch(preselectCharacterTwo(categoryIndex, newCharacterIndex));
+  };
+  const characterIndex = useCharacterIndex(characters, input, onChange, defaultCharacterIndex);
   const character = characters[characterIndex];
   const characterName = useCharacterName(character);
 

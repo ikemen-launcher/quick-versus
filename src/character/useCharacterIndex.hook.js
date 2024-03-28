@@ -4,7 +4,7 @@ import useCharacterColumns from "../configuration/useCharacterColumns.hook";
 import useMoveCursorSound from "../configuration/useMoveCursorSound.hook";
 import { DOWN, UP, LEFT, RIGHT } from "../input/event";
 
-export default function useCharacterIndex(characters, input, initialIndex = 0) {
+export default function useCharacterIndex(characters, input, onChange, initialIndex = 0) {
   const moveCursorSound = useMoveCursorSound();
   const columnCount = useCharacterColumns();
   const [selectedIndex, selectIndex] = useState(initialIndex);
@@ -12,6 +12,11 @@ export default function useCharacterIndex(characters, input, initialIndex = 0) {
   useEffect(() => {
     const newSelectedIndex = initialIndex < characters.length ? initialIndex : 0;
     selectIndex(newSelectedIndex);
+
+    const select = (index) => {
+      selectIndex(index);
+      onChange(index);
+    };
 
     const matrix = getCharactersMatrix(characters, columnCount);
     let selectedRowIndex = 0;
@@ -48,12 +53,12 @@ export default function useCharacterIndex(characters, input, initialIndex = 0) {
       } else {
         selectedColumnIndex = matrix[selectedRowIndex].length - 1;
       }
-      selectIndex(getSelectedIndexFromMatrix());
+      select(getSelectedIndexFromMatrix());
       moveCursorSound.play();
     };
     const increaseColumnIndex = () => {
       selectedColumnIndex = (selectedColumnIndex + 1) % matrix[selectedRowIndex].length;
-      selectIndex(getSelectedIndexFromMatrix());
+      select(getSelectedIndexFromMatrix());
       moveCursorSound.play();
     };
     const decreaseRowIndex = () => {
@@ -68,7 +73,7 @@ export default function useCharacterIndex(characters, input, initialIndex = 0) {
         }
       }
 
-      selectIndex(getSelectedIndexFromMatrix());
+      select(getSelectedIndexFromMatrix());
       moveCursorSound.play();
     };
     const increaseRowIndex = () => {
@@ -76,7 +81,7 @@ export default function useCharacterIndex(characters, input, initialIndex = 0) {
       if (selectedColumnIndex >= matrix[selectedRowIndex].length) {
         selectedRowIndex = 0;
       }
-      selectIndex(getSelectedIndexFromMatrix());
+      select(getSelectedIndexFromMatrix());
       moveCursorSound.play();
     };
 
