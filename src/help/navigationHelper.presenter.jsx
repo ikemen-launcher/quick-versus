@@ -9,9 +9,9 @@ import SELECTING_AI_LEVEL from "../navigation/sideState/selectingAILevel.state";
 import TRAINING from "../navigation/mode/training.mode";
 import ButtonA from "../assets/buttons/A.svg";
 import ButtonB from "../assets/buttons/B.svg";
+import ButtonL1 from "../assets/buttons/L1.svg";
+import ButtonR1 from "../assets/buttons/R1.svg";
 import ButtonX from "../assets/buttons/X.svg";
-import ButtonY from "../assets/buttons/Y.svg";
-import ButtonZ from "../assets/buttons/Z.svg";
 import Directions from "../assets/buttons/4-directions.svg";
 import Vertical from "../assets/buttons/vertical.svg";
 import Horizontal from "../assets/buttons/horizontal.svg";
@@ -30,13 +30,13 @@ export default function NavigationHelper() {
         <ButtonB height="3vh" />
         <Label>cancel</Label>
         <Separator />
-        <ButtonX height="3vh" />
+        <ButtonL1 height="3vh" />
         <Label>previous category</Label>
         <Separator />
-        <ButtonY height="3vh" />
+        <ButtonR1 height="3vh" />
         <Label>next category</Label>
         <Separator />
-        <ButtonZ height="3vh" />
+        <ButtonX height="3vh" />
         <Label>{mode === TRAINING ? "versus mode" : "training"}</Label>
         <Separator />
         <Directions height="3vh" />
@@ -59,7 +59,7 @@ export default function NavigationHelper() {
         <ButtonB height="3vh" />
         <Label>cancel</Label>
         <Separator />
-        <ButtonZ height="3vh" />
+        <ButtonX height="3vh" />
         <Label>{mode === TRAINING ? "versus mode" : "training"}</Label>
         <Separator />
         <Vertical height="3vh" />

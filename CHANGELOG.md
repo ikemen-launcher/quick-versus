@@ -17,5 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remember the selected stage
 - Display stage position
 - Use full width for the stage name
+- Update the help bar: replace Mugen/Ikemen buttons by gamepad buttons (A, B, X, Y, L1, R1)
 
 [Unreleased]: https://github.com/ikemen-launcher/quick-versus/compare/04613475d356f64b9a17af8401c3be11209536c7...HEAD
