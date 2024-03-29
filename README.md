@@ -27,98 +27,13 @@ Launch a Ikemen GO fight without displaying the screenpack.
 | ------ | -------------------------------- |
 | `A`    | Confirm                          |
 | `B`    | Cancel                           |
-| `X`    | Previous category                |
-| `Y`    | Next category                    |
-| `Z`    | Switch mode (Training or Versus) |
+| `L1`   | Previous category                |
+| `R1`   | Next category                    |
+| `X`    | Switch mode (Training or Versus) |
 
 ## Installation
 
-Download [quick-versus.exe](https://github.com/mugen-launcher/quick-versus/releases/latest/download/quick-versus.exe) and put it on the same directory as `mugen.exe`.
-
-Create the file `quick-versus.json`:
-
-```json
-{
-  "characterColumns": 3,
-  "categories": [
-    {
-      "name": "Street Fighter",
-      "image": "Street Fighter/image.png",
-      "characters": [
-        {
-          "definition": "Street Fighter/Ryu/Ryu.def"
-        }
-      ]
-    }
-  ],
-  "stages": [
-    {
-      "definition": "Training.def",
-      "image": "Training.png"
-    }
-  ],
-  "playerOne": {
-    "keyboard": {
-      "left": "ArrowLeft",
-      "right": "ArrowRight",
-      "up": "ArrowUp",
-      "down": "ArrowDown",
-      "a": "w",
-      "b": "x",
-      "c": "c",
-      "x": "q",
-      "y": "s",
-      "z": "d",
-      "escape": "Escape",
-      "enter": "Enter"
-    },
-    "gamepad": {
-      "left": "A17",
-      "right": "A18",
-      "up": "A19",
-      "down": "A20",
-      "a": "A0",
-      "b": "A1",
-      "c": "A7",
-      "x": "A2",
-      "y": "A3",
-      "z": "A6",
-      "escape": "A8",
-      "enter": "A9"
-    }
-  },
-  "playerTwo": {
-    "keyboard": {
-      "left": "k",
-      "right": "m",
-      "up": "o",
-      "down": "l",
-      "a": "g",
-      "b": "h",
-      "c": "j",
-      "x": "t",
-      "y": "y",
-      "z": "u",
-      "escape": "i",
-      "enter": "p"
-    },
-    "gamepad": {
-      "left": "B17",
-      "right": "B18",
-      "up": "B19",
-      "down": "B20",
-      "a": "B0",
-      "b": "B1",
-      "c": "B7",
-      "x": "B2",
-      "y": "B3",
-      "z": "B6",
-      "escape": "B8",
-      "enter": "B9"
-    }
-  }
-}
-```
+Download [quick-versus.exe](https://github.com/ikemen-launcher/quick-versus/releases/latest/download/quick-versus.zip).
 
 Characters are organized by category.
 Each category has an image (displayed on top of the screen).
