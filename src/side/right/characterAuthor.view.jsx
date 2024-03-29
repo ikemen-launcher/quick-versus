@@ -7,7 +7,7 @@ const Wrapper = styled.h1`
   white-space: nowrap;
   right: ${props => props.x};
   bottom: 0vh;
-  font-family: Ubuntu;
+  font-family: Roboto;
   font-size: 1.5vw;
   letter-spacing: 0.05em;
   color: #fff;
