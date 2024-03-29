@@ -109,10 +109,14 @@ function getVersion(event) {
 
 async function launchGame(event, options) {
   const directoryPath = getCurrentDirectory();
-  const filePath = `${directoryPath}/.engine/run-ikemen.sh`;
   const config = getConfiguration();
 
-  let command = `"${filePath}"`;
+  let ikemenExecutablePath = `${directoryPath}/.engine/run-ikemen.sh`;
+  if (config.ikemenExecutable) {
+    ikemenExecutablePath = config.ikemenExecutable;
+  }
+
+  let command = `"${ikemenExecutablePath}"`;
   if (config.rounds) {
     command += ` -rounds="${config.rounds}"`;
   }
