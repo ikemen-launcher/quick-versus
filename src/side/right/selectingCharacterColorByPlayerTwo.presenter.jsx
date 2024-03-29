@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useInput from "../../input/useInputPlayerTwo.hook";
 import { A, B } from "../../input/event";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useCharacterColorCount from "../../character/useCharacterColorCount.hook";
 import useCharacterColorIndex from "../../character/useCharacterColorIndex.hook";
 import useNavigationDispatch from "../../navigation/useDispatch.hook";
@@ -25,6 +26,7 @@ export default function SelectingCharacterColorByPlayerTwo({ character }) {
   const colorSound = useSelectColorSound();
   const cancelSound = useCancelSound();
   const characterName = useCharacterName(character);
+  const characterAuthor = useCharacterAuthor(character);
   const colorCount = useCharacterColorCount(character);
 
   let defaultColorIndex = 1;
@@ -68,6 +70,7 @@ export default function SelectingCharacterColorByPlayerTwo({ character }) {
       </Zone>
       <StandAnimation character={character} colorIndex={characterColorIndex} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Player 2</Type>
     </>
   );

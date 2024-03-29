@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useInput from "../../input/useInputPlayerOne.hook";
 import { A, B } from "../../input/event";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useNavigation from "../../navigation/useData.hook";
 import useNavigationDispatch from "../../navigation/useDispatch.hook";
 import unselectCharacterTwo from "../../navigation/action/unselectCharacterTwo.action";
@@ -14,6 +15,7 @@ import useColorIndex from "./useColorIndex.hook";
 import Portrait from "./portrait.view";
 import StandAnimation from "./standAnimation.view";
 import CharacterName from "./characterName.view";
+import CharacterAuthor from "./characterAuthor.view";
 import Type from "./type.view";
 import Zone from "./zone.view";
 
@@ -22,6 +24,7 @@ export default function SelectingCharacterAILevelByPlayerOne({ character }) {
   const dispatch = useNavigationDispatch();
   const input = useInput();
   const characterName = useCharacterName(character);
+  const characterAuthor = useCharacterAuthor(character);
   const characterAILevel = useCharacterAILevel(input, navigation.characterTwoAILevel);
   const selectAILevelSound = useSelectAILevelSound();
   const cancelSound = useCancelSound();
@@ -54,6 +57,7 @@ export default function SelectingCharacterAILevelByPlayerOne({ character }) {
       </Zone>
       <StandAnimation character={character} colorIndex={colorIndex} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Computer</Type>
     </>
   );

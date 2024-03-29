@@ -21,5 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remember preselected character by category
 - Remember preselected color by character
 - Remember preselected style by category and character
+- Display character author
 
 [Unreleased]: https://github.com/ikemen-launcher/quick-versus/compare/04613475d356f64b9a17af8401c3be11209536c7...HEAD

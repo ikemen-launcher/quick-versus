@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useInput from "../../input/useInputPlayerOne.hook";
 import { A, B, X } from "../../input/event";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useCharacterStyleNames from "../../character/useCharacterStyleNames.hook";
 import useCharacterStyleIndex from "../../character/useCharacterStyleIndex.hook";
 import useCharacterStyle from "../../character/useCharacterStyle.hook";
@@ -18,6 +19,7 @@ import StyleSelector from "../../character/styleSelector.view";
 import Portrait from "./portrait.view";
 import StandAnimation from "./standAnimation.view";
 import CharacterName from "./characterName.view";
+import CharacterAuthor from "./characterAuthor.view";
 import Type from "./type.view";
 
 export default function SelectingCharacterStyleByPlayerOne({ character }) {
@@ -39,6 +41,7 @@ export default function SelectingCharacterStyleByPlayerOne({ character }) {
   const characterStyleIndex = useCharacterStyleIndex(input, styleNames.length, onChange, defaultStyleIndex);
   const characterStyle = useCharacterStyle(character, characterStyleIndex);
   const characterName = useCharacterName(characterStyle);
+  const characterAuthor = useCharacterAuthor(characterStyle);
 
   useEffect(() => {
     const onConfirm = () => {
@@ -77,6 +80,7 @@ export default function SelectingCharacterStyleByPlayerOne({ character }) {
       </Zone>
       <StandAnimation character={characterStyle} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Player 1</Type>
     </>
   );

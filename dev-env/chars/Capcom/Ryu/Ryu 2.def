@@ -1,7 +1,7 @@
 [Info]
 name = "Ryu"
-displayname = "Ryu"
-author = "foobar"
+displayname = "Ryu 2"
+author = "tic tac toe"
 
 [Files]
 cns = constants.cns

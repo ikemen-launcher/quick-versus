@@ -1,6 +1,6 @@
 [Info]
 name = "Chun-Li"
-
+author = "toto"
 
 [Files]
 cns = constants.cns

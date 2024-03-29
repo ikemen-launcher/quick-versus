@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useInput from "../../input/useInputPlayerOne.hook";
 import { A, B } from "../../input/event";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useCharacterColorCount from "../../character/useCharacterColorCount.hook";
 import useCharacterColorIndex from "../../character/useCharacterColorIndex.hook";
 import useNavigationDispatch from "../../navigation/useDispatch.hook";
@@ -15,6 +16,7 @@ import ColorSelector from "../../character/colorSelector.view";
 import Portrait from "./portrait.view";
 import StandAnimation from "./standAnimation.view";
 import CharacterName from "./characterName.view";
+import CharacterAuthor from "./characterAuthor.view";
 import Type from "./type.view";
 import Zone from "./zone.view";
 
@@ -25,6 +27,7 @@ export default function SelectingCharacterColorByPlayerOne({ character }) {
   const colorSound = useSelectColorSound();
   const cancelSound = useCancelSound();
   const characterName = useCharacterName(character);
+  const characterAuthor = useCharacterAuthor(character);
   const colorCount = useCharacterColorCount(character);
 
   let defaultColorIndex = 1;
@@ -68,6 +71,7 @@ export default function SelectingCharacterColorByPlayerOne({ character }) {
       </Zone>
       <StandAnimation character={character} colorIndex={characterColorIndex} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Computer</Type>
     </>
   );

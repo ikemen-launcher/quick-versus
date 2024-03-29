@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useInput from "../../input/useInputPlayerTwo.hook";
 import { A, B } from "../../input/event";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useCharacterStyleNames from "../../character/useCharacterStyleNames.hook";
 import useCharacterStyleIndex from "../../character/useCharacterStyleIndex.hook";
 import useCharacterStyle from "../../character/useCharacterStyle.hook";
@@ -38,6 +39,7 @@ export default function SelectingCharacterStyleByPlayerTwo({ character }) {
   const characterStyleIndex = useCharacterStyleIndex(input, styleNames.length, onChange, defaultStyleIndex);
   const characterStyle = useCharacterStyle(character, characterStyleIndex);
   const characterName = useCharacterName(characterStyle);
+  const characterAuthor = useCharacterAuthor(characterStyle);
 
   useEffect(() => {
     const onCancel = () => {
@@ -71,6 +73,7 @@ export default function SelectingCharacterStyleByPlayerTwo({ character }) {
       </Zone>
       <StandAnimation character={characterStyle} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Player 2</Type>
     </>
   );

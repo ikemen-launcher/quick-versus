@@ -5,6 +5,7 @@ import useCategories from "../../configuration/useCategories.hook";
 import useCategoryIndex from "../../category/useCategoryIndex.hook";
 import useCharacterIndex from "../../character/useCharacterIndex.hook";
 import useCharacterName from "../../character/useCharacterName.hook";
+import useCharacterAuthor from "../../character/useCharacterAuthor.hook";
 import useNavigation from "../../navigation/useData.hook";
 import useNavigationDispatch from "../../navigation/useDispatch.hook";
 import useSelectCharacterSound from "../../configuration/useSelectCharacterSound.hook";
@@ -19,6 +20,7 @@ import CharacterSelector from "../../character/characterSelector.view";
 import Portrait from "./portrait.view";
 import StandAnimation from "./standAnimation.view";
 import CharacterName from "./characterName.view";
+import CharacterAuthor from "./characterAuthor.view";
 import Type from "./type.view";
 import getSelectableCharactersFromCategories from "../../character/util/getSelectableCharactersFromCategories";
 import getSelectableCharactersFromCategory from "../../character/util/getSelectableCharactersFromCategory";
@@ -47,6 +49,7 @@ export default function SelectingCharacterByPlayerTwo() {
   const characterIndex = useCharacterIndex(characters, input, onChange, defaultCharacterIndex);
   const character = characters[characterIndex];
   const characterName = useCharacterName(character);
+  const characterAuthor = useCharacterAuthor(character);
 
   const isRandomCategory = !!category.random;
   const isRandomCharacter = character && character.random;
@@ -130,6 +133,7 @@ export default function SelectingCharacterByPlayerTwo() {
       </CategoryPaginationZone>
       <StandAnimation character={character} />
       <CharacterName>{characterName}</CharacterName>
+      <CharacterAuthor>{characterAuthor}</CharacterAuthor>
       <Type>Player 2</Type>
     </>
   );
