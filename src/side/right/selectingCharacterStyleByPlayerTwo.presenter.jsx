@@ -17,6 +17,7 @@ import StyleSelector from "../../character/styleSelector.view";
 import Portrait from "./portrait.view";
 import StandAnimation from "./standAnimation.view";
 import CharacterName from "./characterName.view";
+import CharacterAuthor from "./characterAuthor.view";
 import Type from "./type.view";
 import Zone from "./zone.view";
 
