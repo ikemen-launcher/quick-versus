@@ -9,6 +9,7 @@ import useNavigationDispatch from "../../navigation/useDispatch.hook";
 import useCancelSound from "../../configuration/useCancelSound.hook";
 import useSelectStyleSound from "../../configuration/useSelectStyleSound.hook";
 import useNavigation from "../../navigation/useData.hook";
+import preselectCharacterOneStyle from "../../navigation/action/preselectCharacterOneStyle.action";
 import selectCharacterOneStyle from "../../navigation/action/selectCharacterOneStyle.action";
 import unselectCharacterOne from "../../navigation/action/unselectCharacterOne.action";
 import switchMode from "../../navigation/action/switchMode.action";
@@ -26,7 +27,16 @@ export default function SelectingCharacterStyleByPlayerOne({ character }) {
   const styleSound = useSelectStyleSound();
   const cancelSound = useCancelSound();
   const styleNames = useCharacterStyleNames(character);
-  const characterStyleIndex = useCharacterStyleIndex(input, styleNames.length, navigation.characterOneStyleIndex);
+
+  let defaultStyleIndex = 0;
+  const key = `${navigation.characterOneCategoryIndex}-${navigation.characterOneIndex}`;
+  if (navigation.characterOneStylePreselectionByCategoryAndCharacterIndex && navigation.characterOneStylePreselectionByCategoryAndCharacterIndex.has(key)) {
+    defaultStyleIndex = navigation.characterOneStylePreselectionByCategoryAndCharacterIndex.get(key);
+  }
+  const onChange = (newStyleIndex) => {
+    dispatch(preselectCharacterOneStyle(newStyleIndex));
+  };
+  const characterStyleIndex = useCharacterStyleIndex(input, styleNames.length, onChange, defaultStyleIndex);
   const characterStyle = useCharacterStyle(character, characterStyleIndex);
   const characterName = useCharacterName(characterStyle);
 

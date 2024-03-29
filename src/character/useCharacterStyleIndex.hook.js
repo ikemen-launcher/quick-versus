@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useMoveCursorSound from "../configuration/useMoveCursorSound.hook";
 import { DOWN, UP } from "../input/event";
 
-export default function useCharacterStyleIndex(input, total, initialIndex = 0) {
+export default function useCharacterStyleIndex(input, total, onChange, initialIndex = 0) {
   const moveCursorSound = useMoveCursorSound();
   const [index, setIndex] = useState(initialIndex);
 
@@ -12,16 +12,21 @@ export default function useCharacterStyleIndex(input, total, initialIndex = 0) {
   }
 
   useEffect(() => {
+    const select = (index) => {
+      setIndex(index);
+      onChange(index);
+    };
+
     const decreaseIndex = () => {
       if (currentIndex > 0) {
-        setIndex(currentIndex - 1);
+        select(currentIndex - 1);
       } else {
-        setIndex(total - 1);
+        select(total - 1);
       }
       moveCursorSound.play();
     };
     const increaseIndex = () => {
-      setIndex((currentIndex + 1) % total);
+      select((currentIndex + 1) % total);
       moveCursorSound.play();
     };
 

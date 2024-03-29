@@ -20,5 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update the help bar: replace Mugen/Ikemen buttons by gamepad buttons (A, B, X, Y, L1, R1)
 - Remember preselected character by category
 - Remember preselected color by character
+- Remember preselected style by category and character
 
 [Unreleased]: https://github.com/ikemen-launcher/quick-versus/compare/04613475d356f64b9a17af8401c3be11209536c7...HEAD

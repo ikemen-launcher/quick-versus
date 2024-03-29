@@ -5,14 +5,40 @@
       "image": "Capcom/image.png",
       "characters": [
         {
+          "styleName": "Style 1",
           "definition": "Capcom/Ryu/Ryu.def",
           "thumbnail": "Capcom/Ryu/thumbnail.png",
-          "portrait": "Capcom/Ryu/portrait.png"
+          "portrait": "Capcom/Ryu/portrait.png",
+          "styles": [
+            {
+              "styleName": "Style 2",
+              "definition": "Capcom/Ryu/Ryu.def",
+              "thumbnail": "Capcom/Ryu/thumbnail.png"
+            },
+            {
+              "styleName": "Style 3",
+              "definition": "Capcom/Ryu/Ryu.def",
+              "thumbnail": "Capcom/Ryu/thumbnail.png"
+            }
+          ]
         },
         {
+          "styleName": "Style 1",
           "definition": "Capcom/Chun-Li/Chun-Li.def",
           "thumbnail": "Capcom/Chun-Li/thumbnail.png",
-          "portrait": "Capcom/Chun-Li/portrait.png"
+          "portrait": "Capcom/Chun-Li/portrait.png",
+          "styles": [
+            {
+              "styleName": "Style 2",
+              "definition": "Capcom/Chun-Li/Chun-Li.def",
+              "thumbnail": "Capcom/Chun-Li/thumbnail.png"
+            },
+            {
+              "styleName": "Style 3",
+              "definition": "Capcom/Chun-Li/Chun-Li.def",
+              "thumbnail": "Capcom/Chun-Li/thumbnail.png"
+            }
+          ]
         },
         {
           "definition": "Capcom/Yun/Yun.def",

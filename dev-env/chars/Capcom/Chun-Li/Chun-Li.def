@@ -4,3 +4,9 @@ name = "Chun-Li"
 
 [Files]
 cns = constants.cns
+
+pal1 = 01.act
+pal2 = 02.act
+pal3 = 03.act
+pal4 = 04.act
+pal5 = 05.act
