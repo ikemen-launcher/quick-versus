@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 currentDirectory=$(dirname "$(realpath "$0")")
 cd "$currentDirectory/Ikemen_GO"

@@ -33,7 +33,11 @@ Launch a Ikemen GO fight without displaying the screenpack.
 
 ## Installation
 
-Download [quick-versus.exe](https://github.com/ikemen-launcher/quick-versus/releases/latest/download/quick-versus.zip).
+1. Download the bootstrap project: https://github.com/ikemen-launcher/quick-versus-bootstrap/releases
+2. Download the executable: https://github.com/ikemen-launcher/quick-versus/releases
+3. Put the executable in the bootstrap project
+
+## Configuration
 
 Characters are organized by category.
 Each category has an image (displayed on top of the screen).
@@ -43,6 +47,8 @@ For each character, you need to provide the definition path.
 
 | Name                                    | Description                                                             |
 | --------------------------------------- | ----------------------------------------------------------------------- |
+| `ikemenExecutable`                      | Path to Ikemen executable                                               |
+| `ikemenExecutableWindows`               | Path to Ikemen executable on Windows                                    |
 | `width`                                 | Application width (default: `1024`)                                     |
 | `height`                                | Application height (default: `576`)                                     |
 | `fullscreen`                            | Fullscreen (default: `false`)                                           |

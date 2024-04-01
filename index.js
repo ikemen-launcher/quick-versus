@@ -1,3 +1,4 @@
+const platform = require("os").platform();
 const util = require("node:util");
 const { spawn } = require("node:child_process");
 const { app, BrowserWindow, ipcMain } = require("electron");
@@ -112,43 +113,44 @@ async function launchGame(event, options) {
   const config = getConfiguration();
 
   let ikemenExecutablePath = `${directoryPath}/.engine/run-ikemen.sh`;
-  if (config.ikemenExecutable) {
+  if (/^win/.test(platform) && config.ikemenExecutableWindows) {
+    ikemenExecutablePath = config.ikemenExecutableWindows;
+  } else if (config.ikemenExecutable) {
     ikemenExecutablePath = config.ikemenExecutable;
   }
 
-  let command = `"${ikemenExecutablePath}"`;
+  const args = [];
   if (config.rounds) {
-    command += ` -rounds="${config.rounds}"`;
+    args.push(`-rounds=${config.rounds}`);
   }
   if (config.motif) {
-    command += ` -motif="${config.motif}"`;
+    args.push(`-motif=${config.motif}`);
   }
   if (config.lifebar) {
-    command += ` -lifebar="${config.lifebar}"`;
+    args.push(`-lifebar=${config.lifebar}`);
   }
   if (options.characterOne) {
-    command += ` -p1="${options.characterOne}"`;
+    args.push(`-p1=${options.characterOne}`);
   }
   if (options.characterOneColorIndex) {
-    command += ` -p1.color="${options.characterOneColorIndex}"`;
+    args.push(`-p1.color=${options.characterOneColorIndex}`);
   }
   if (options.characterTwo) {
-    command += ` -p2="${options.characterTwo}"`;
+    args.push(`-p2=${options.characterTwo}`);
   }
   if (options.characterTwoColorIndex) {
-    command += ` -p2.color="${options.characterTwoColorIndex}"`;
+    args.push(`-p2.color=${options.characterTwoColorIndex}`);
   }
   if (options.characterTwoAILevel) {
-    command += ` -p2.ai="${options.characterTwoAILevel}"`;
+    args.push(`-p2.ai=${options.characterTwoAILevel}`);
   }
   if (options.stage) {
-    command += ` -s="${options.stage}"`;
+    args.push(`-s=${options.stage}`);
   }
 
   return new Promise((resolve, reject) => {
-    const args = ["-c", command];
-    console.log("launch game", args);
-    const process = spawn("sh", args, { cwd: directoryPath });
+    console.log("launch game", ikemenExecutablePath, args);
+    const process = spawn(ikemenExecutablePath, args, { cwd: directoryPath });
     process.stdout.on("data", (data) => {
       console.log(data.toString('utf8'));
     });
